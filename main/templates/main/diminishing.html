@@ -1,0 +1,80 @@
+{% load static %}
+{% load slang %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'main/style_dim.css' %}">
+
+<header>
+    <button onclick="window.location.href='/'" class="button col-1-5">Главная</button>
+    <button onclick="window.location.href='/classes'" class="button col-1-5">Классы</button>
+    <button onclick="window.location.href='/slang'" class="button col-1-5">Сленговый словарь</button>
+    <button onclick="window.location.href='/diminishing'" class="button col-1-5">Диминишинги</button>
+    <button onclick="window.location.href='/macro'" class="button col-1-5">Макросы</button>
+</header>
+
+<html>
+<head>
+  <title>Diminishing Returns</title>
+</head>
+<body>
+  <div class="info">
+  <input id="info__body_1" class="info__switch" type="checkbox">
+  <label for="info__body_1" class="info__headline">Что это и зачем это нужно?</label>
+  <div class="info__body">
+    Diminishing Returns дословно переводится как "уменьшение отдачи".<br>
+    Суть же заключается в том, что применение одного и того же типа контроля к цели ведёт к уменьшению времени действия этого типа контроля.<br>
+    Первый контроль типа А будет иметь 100% длительность.<br>
+    Второй - 50% длительность.<br>
+    Третий - 25% длительность.<br>
+    Четвертый и далее вовсе не дадут никакого эффекта.<br>
+    "Окно" диминишинга, т.е. время, после которого сей "цикл" начнётся с нуля, составляет порядка 20-ти секунд с момента окончания последнего контроля данного типа. В это время можно пичкать цель контролями другого вида, либо вовсе оставить её в покое.<br>
+    Отслеживать данное время можно при помощи аддонов: Gladius, sArena, TellMeWhen и т.д.<br>
+    Далее демонстрируется деление на группы контролей.<br>
+  </div>
+  </div>
+  <br>
+  <center>
+    {% type_counter as type_counter %}
+    {% for i in type_counter %}
+      {% get_dim_name num=i as dim_name %}
+      <table class="{{ dim_name }}">
+        <tr>
+          <th>
+          </th>
+          <th>
+            {{ dim_name }}
+          </th>
+          <th>
+          </th>
+        <tr>
+          <th>
+            Класс
+          </th>
+          <th>
+            Способность
+          </th>
+          <th>
+            Длительность
+          </th>
+        </tr>
+
+        {% inner_counter num=i as counter %}
+        {% for j in counter %}
+          {% get_diminishing num_type=i num_order=j as current_slang %}
+          <tr>
+            <td>
+              {{ current_slang.klass }}
+            </td>
+            <td>
+              {{ current_slang.ability }}
+            </td>
+            <td>
+              {{ current_slang.duration }}
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% endfor %}
+  </center>
+
+</body>
+</html>

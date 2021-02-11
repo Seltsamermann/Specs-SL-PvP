@@ -1,0 +1,121 @@
+html {
+  background-color: DarkGrey;
+}
+
+.col-1-3 {
+  width: 33.33%;
+  float: left;
+}
+
+.col-1-4 {
+  width: 25%;
+  float: left;
+}
+
+header {
+  grid-area: header;
+  display: block;
+  position: fixed;
+  top: 5;
+}
+
+body {
+  overflow: auto;
+}
+
+footer {
+  position: fixed;
+  bottom: 5;
+}
+
+.space {
+  width: 12.5%;
+  float: left;
+}
+
+p {
+  font-size: 16pt;
+}
+
+table {
+  border-spacing: 50px;
+  width: 100%;
+  table-layout: fixed;
+}
+table th {
+  font-size: 36pt;
+}
+table td {
+  vertical-align: top;
+  width: 33.33%;
+}
+table tr {
+  font-size: 36pt;
+}
+.main_row {
+  font-size: 36pt;
+}
+
+.table2 img {
+  margin-right: 20px;
+}
+
+
+.images {
+text-align: center;
+display: inline-block;
+overflow: hidden;
+position: relative;
+text-decoration: none;
+}
+
+.images:before {
+display: block;
+background-color: rgb(0, 0, 0);
+content: "";
+height: 100%;
+opacity: 0;
+position: absolute;
+width: 100%;
+z-index: 2;
+}
+
+.images:after {
+font-family: 'Lucida Console';
+color: white;
+content: attr(alt);
+display: block;
+font-size: 16px;
+opacity: 0;
+padding: 0 3%;
+position: absolute;
+text-transform: none;
+top: 50%;
+-webkit-transform-origin: 50% 0%;
+transform-origin: 50% 0%;
+-webkit-transform: scale(0) translateY(-50%);
+transform: scale(0) translateY(-50%);
+width: 94%;
+z-index: 3;
+}
+
+.images img {
+border: none;
+display: block;
+z-index: 1;
+}
+
+.images:after {
+-webkit-transition: all 350ms ease-in-out;
+transition: all 350ms ease-in-out;
+}
+
+.images:hover:before {
+opacity: 0.6;
+}
+
+.images:hover:after {
+opacity: 1;
+-webkit-transform: scale(1) translateY(-50%);
+transform: scale(1) translateY(-50%);
+}

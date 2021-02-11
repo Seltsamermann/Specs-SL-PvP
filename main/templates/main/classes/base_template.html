@@ -1,0 +1,321 @@
+{% load static %}
+{% load main_extras %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'main/style_war.css' %}">
+
+<html>
+<head>
+  <title>{{ current_class }}</title>
+</head>
+<header>
+    <button onclick="window.location.href='/'" class="button">Главная</button>
+    <button onclick="window.location.href='/classes'" class="button">Классы</button>
+    <button onclick="window.location.href='/slang'" class="button">Сленговый словарь</button>
+    <button onclick="window.location.href='/diminishing'" class="button">Диминишинги</button>
+    <button onclick="window.location.href='/macro'" class="button">Макросы</button>
+</header>
+<body>
+  <center>
+  <br>
+  <br>
+  <table>
+  <tr>
+    {% class_spec_list class_name=current_class as spec_list %}
+    {% for spec in spec_list %}
+      <th>
+        <a class="images" href="../{{ spec.id }}" title="" alt="{{ spec.name }}"><img src="{{ spec.image }}" height="175" alt=""></a>
+      </th>
+    {% endfor %}
+  </tr>
+  </table>
+  <table class="table2">
+  {% class_spec_count class_name=current_class as spec_count %}
+
+  <tr>
+    <th colspan="{{ spec_count }}">Cпособности ковенантов</th>
+  </tr>
+
+  {% max_class_abilities name=current_class type="ковенант" as maximum %}
+  {% for j in maximum %}
+    <tr>
+      {% for spec in spec_list %}
+        {% filter_spec_coven spek=spec.name num=j as spell %}
+        <td>
+          {% if spell.name %}
+            <p><img hspace="0" vspace="0" align="left" src="{{ spell.image }}" height="100">
+            <b>{{ spell.name }}</b><br>
+            {{ spell.tier }}<br>
+            {{ spell.type }}<br>
+            {% if spell.cd != "" %}
+              <b>КД: </b>{{ spell.cd }}
+            {% else %}
+              <br>
+            {% endif %}
+            </p>
+            <p>
+            {% if spell.explain != "" %}
+              {{ spell.explain }}<br>
+            {% endif %}
+            {% if spell.on_use != "" %}
+              <b>При использовании: </b>{{ spell.on_use }}<br>
+            {% endif %}
+            {% if spell.on_duration != "" %}
+              <b>На время действия: </b>{{ spell.on_duration }}<br>
+            {% endif %}
+            {% if spell.radius != "" %}
+              <b>Радиус: </b>{{ spell.radius }}<br>
+            {% endif %}
+            {% if spell.buff_type != "" %}
+              {{ spell.buff_type }}<br>
+            {% endif %}
+            {% if spell.note != "" %}
+              <i>Примечание: {{ spell.note }}</i>
+            {% endif %}
+            </p>
+          {% endif %}
+        </td>
+      {% endfor %}
+    </tr>
+  {% endfor %}
+
+
+  <tr>
+    <th colspan="{{ spec_count }}">Бурстовые способности</th>
+  </tr>
+
+  {% max_class_abilities name=current_class type="бурст" as maximum %}
+  {% for j in maximum %}
+    <tr>
+      {% for spec in spec_list %}
+        {% filter_spec_burst spek=spec.name num=j as spell %}
+        <td>
+          {% if spell.name %}
+            <p><img hspace="0" vspace="0" align="left" src="{{ spell.image }}" height="100">
+            <b>{{ spell.name }}</b><br>
+            {{ spell.tier }}<br>
+            {{ spell.type }}<br>
+            {% if spell.cd != "" %}
+              <b>КД: </b>{{ spell.cd }}
+            {% else %}
+              <br>
+            {% endif %}
+            </p>
+            <p>
+            {% if spell.explain != "" %}
+              {{ spell.explain }}<br>
+            {% endif %}
+            {% if spell.on_use != "" %}
+              <b>При использовании: </b>{{ spell.on_use }}<br>
+            {% endif %}
+            {% if spell.on_duration != "" %}
+              <b>На время действия: </b>{{ spell.on_duration }}<br>
+            {% endif %}
+            {% if spell.radius != "" %}
+              <b>Радиус: </b>{{ spell.radius }}<br>
+            {% endif %}
+            {% if spell.buff_type != "" %}
+              {{ spell.buff_type }}<br>
+            {% endif %}
+            {% if spell.note != "" %}
+              <i>Примечание: {{ spell.note }}</i>
+            {% endif %}
+            </p>
+          {% endif %}
+        </td>
+      {% endfor %}
+    </tr>
+  {% endfor %}
+
+  <tr>
+    <th colspan="{{ spec_count }}">Сейвы/отхил</th>
+  </tr>
+
+  {% max_class_abilities name=current_class type="сейв" as maximum %}
+  {% for j in maximum %}
+    <tr>
+      {% for spec in spec_list %}
+        {% filter_spec_save spek=spec.name num=j as spell %}
+        <td>
+          {% if spell.name %}
+            <p><img hspace="0" vspace="0" align="left" src="{{ spell.image }}" height="100">
+            <b>{{ spell.name }}</b><br>
+            {{ spell.tier }}<br>
+            {{ spell.type }}<br>
+            {% if spell.cd != "" %}
+              <b>КД: </b>{{ spell.cd }}
+            {% else %}
+              <br>
+            {% endif %}
+            </p>
+            <p>
+            {% if spell.explain != "" %}
+              {{ spell.explain }}<br>
+            {% endif %}
+            {% if spell.on_use != "" %}
+              <b>При использовании: </b>{{ spell.on_use }}<br>
+            {% endif %}
+            {% if spell.on_duration != "" %}
+              <b>На время действия: </b>{{ spell.on_duration }}<br>
+            {% endif %}
+            {% if spell.radius != "" %}
+              <b>Радиус: </b>{{ spell.radius }}<br>
+            {% endif %}
+            {% if spell.buff_type != "" %}
+              {{ spell.buff_type }}<br>
+            {% endif %}
+            {% if spell.note != "" %}
+              <i>Примечание: {{ spell.note }}</i>
+            {% endif %}
+            </p>
+          {% endif %}
+        </td>
+      {% endfor %}
+    </tr>
+  {% endfor %}
+
+
+  <tr>
+    <th colspan="{{ spec_count }}">Контроли/прерывания</th>
+  </tr>
+
+  {% max_class_abilities name=current_class type="контроль" as maximum %}
+  {% for j in maximum %}
+    <tr>
+      {% for spec in spec_list %}
+        {% filter_spec_cc spek=spec.name num=j as spell %}
+        <td>
+          {% if spell.name %}
+            <p><img hspace="0" vspace="0" align="left" src="{{ spell.image }}" height="100">
+            <b>{{ spell.name }}</b><br>
+            {{ spell.tier }}<br>
+            {{ spell.type }}<br>
+            {% if spell.cd != "" %}
+              <b>КД: </b>{{ spell.cd }}
+            {% else %}
+              <br>
+            {% endif %}
+            </p>
+            <p>
+            {% if spell.explain != "" %}
+              {{ spell.explain }}<br>
+            {% endif %}
+            {% if spell.on_use != "" %}
+              <b>При использовании: </b>{{ spell.on_use }}<br>
+            {% endif %}
+            {% if spell.on_duration != "" %}
+              <b>На время действия: </b>{{ spell.on_duration }}<br>
+            {% endif %}
+            {% if spell.radius != "" %}
+              <b>Радиус: </b>{{ spell.radius }}<br>
+            {% endif %}
+            {% if spell.buff_type != "" %}
+              {{ spell.buff_type }}<br>
+            {% endif %}
+            {% if spell.note != "" %}
+              <i>Примечание: {{ spell.note }}</i>
+            {% endif %}
+            </p>
+          {% endif %}
+        </td>
+      {% endfor %}
+    </tr>
+  {% endfor %}
+
+  <tr>
+    <th colspan="{{ spec_count }}">Мобильность/антиконтроль</th>
+  </tr>
+
+  {% max_class_abilities name=current_class type="мобильность" as maximum %}
+  {% for j in maximum %}
+    <tr>
+      {% for spec in spec_list %}
+        {% filter_spec_mobile spek=spec.name num=j as spell %}
+        <td>
+          {% if spell.name %}
+            <p><img hspace="0" vspace="0" align="left" src="{{ spell.image }}" height="100">
+            <b>{{ spell.name }}</b><br>
+            {{ spell.tier }}<br>
+            {{ spell.type }}<br>
+            {% if spell.cd != "" %}
+              <b>КД: </b>{{ spell.cd }}
+            {% else %}
+              <br>
+            {% endif %}
+            </p>
+            <p>
+            {% if spell.explain != "" %}
+              {{ spell.explain }}<br>
+            {% endif %}
+            {% if spell.on_use != "" %}
+              <b>При использовании: </b>{{ spell.on_use }}<br>
+            {% endif %}
+            {% if spell.on_duration != "" %}
+              <b>На время действия: </b>{{ spell.on_duration }}<br>
+            {% endif %}
+            {% if spell.radius != "" %}
+              <b>Радиус: </b>{{ spell.radius }}<br>
+            {% endif %}
+            {% if spell.buff_type != "" %}
+              {{ spell.buff_type }}<br>
+            {% endif %}
+            {% if spell.note != "" %}
+              <i>Примечание: {{ spell.note }}</i>
+            {% endif %}
+            </p>
+          {% endif %}
+        </td>
+      {% endfor %}
+    </tr>
+  {% endfor %}
+
+  <tr>
+    <th colspan="{{ spec_count }}">Утилити и то, о чём просто лучше знать</th>
+  </tr>
+
+  {% max_class_abilities name=current_class type="утилити" as maximum %}
+  {% for j in maximum %}
+    <tr>
+      {% for spec in spec_list %}
+        {% filter_spec_utility spek=spec.name num=j as spell %}
+        <td>
+          {% if spell.name %}
+            <p><img hspace="0" vspace="0" align="left" src="{{ spell.image }}" height="100">
+            <b>{{ spell.name }}</b><br>
+            {{ spell.tier }}<br>
+            {{ spell.type }}<br>
+            {% if spell.cd != "" %}
+              <b>КД: </b>{{ spell.cd }}
+            {% else %}
+              <br>
+            {% endif %}
+            </p>
+            <p>
+            {% if spell.explain != "" %}
+              {{ spell.explain }}<br>
+            {% endif %}
+            {% if spell.on_use != "" %}
+              <b>При использовании: </b>{{ spell.on_use }}<br>
+            {% endif %}
+            {% if spell.on_duration != "" %}
+              <b>На время действия: </b>{{ spell.on_duration }}<br>
+            {% endif %}
+            {% if spell.radius != "" %}
+              <b>Радиус: </b>{{ spell.radius }}<br>
+            {% endif %}
+            {% if spell.buff_type != "" %}
+              {{ spell.buff_type }}<br>
+            {% endif %}
+            {% if spell.note != "" %}
+              <i>Примечание: {{ spell.note }}</i>
+            {% endif %}
+            </p>
+          {% endif %}
+        </td>
+      {% endfor %}
+    </tr>
+  {% endfor %}
+
+  </center>
+
+</body>
+</html>

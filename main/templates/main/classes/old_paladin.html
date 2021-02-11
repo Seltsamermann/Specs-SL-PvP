@@ -1,0 +1,71 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'main/style_war.css' %}">
+
+<html>
+<head>
+  <title>{{ current_class.class_name }}</title>
+</head>
+<body>
+  {{ current_class = ClassName.objects.get(class_name = "Паладин") }}
+  <center>
+  <br>
+  <br>
+  <table>
+  <tr>
+    {% for spec in Spec.objects.all() %}
+      {% if spec.klass == class.class_name %}
+        <th>
+          <a class="images" href="#" title="" alt=spec.name><img src=spec.image height="125" alt=""></a>
+        </th>
+      {% endif %}
+    {% endfor %}
+  </tr>
+
+  <tr>
+    <th></th>
+    <th>Бурстовые способности</th>
+    <th></th>
+  </tr>
+
+  {% spec_count_place = {} %}
+  {% for j in range(10) %}
+    <tr>
+      {% for spec in Spec.objects.all() %}
+        {% if spec.klass == class.class_name %}
+          {% if spec.name.get()[0] in spec_count_place %}
+            {% i = spec_count_place(spec.name.get()[0]) %}
+          {% else %}
+            {{ i=-1 }}
+          {% endif %}
+          {% i+=1 %}
+          {% while i not in Spell.filter_spec_burst(spec) and i <= 10000 %}
+            {% i+=1 %}
+          {% spec_count_place[spec.name.get()[0]] = [i] %}
+          {% spell = Spell.filter_spec_burst(spec)[i] %}
+          <td>
+            <p><img hspace="0" vspace="0" align="left" src=spell.image height="100">
+            <b>{{ spell.name }}</b><br>
+            {{ spell.tier }}<br>
+            {{ spell.type }}<br>
+            {{ spell.cd }} </p>
+            <p>
+            {% if spell.explain != "" %}
+              {{ spell.explain }}<br>
+            {% if spell.on_use != "" %}
+              <b>При использовании: </b>{{ spell.on_use }}<br>
+            {% if spell.on duration != "" %}
+              <b>На время действия: </b>{{ spell.on_duration }}<br>
+            {% if spell.radius != "" %}
+              <b>Радиус: </b>{{ spell.radius }}<br>
+            {% if spell.buff_type != "" %}
+              {{ spell.buff_type }}<br>
+            {% if spell.note != "" %}
+              <i>Примечание: {{ spell.radius }}</i>
+            </p>
+          </td>
+    </tr>
+
+  </center>
+</body>
+</html>

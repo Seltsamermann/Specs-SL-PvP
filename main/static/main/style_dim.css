@@ -1,0 +1,106 @@
+html {
+  background-color: BurlyWood;
+}
+
+header {
+  grid-area: header;
+  display: block;
+  position: fixed;
+  top: 5;
+}
+
+
+table {
+  border-spacing: 50px;
+  width: 100%;
+  table-layout: fixed;
+  color: White;
+}
+table th {
+  font-size: 36pt;
+  vertical-align: middle;
+  text-align: center;
+}
+table td {
+  font-size: 28pt;
+  text-align: center;
+  vertical-align: top;
+  width: 33.33%;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.info {
+  padding: 15px 35px;
+  font-size: 15pt;
+  text-align: left;
+}
+
+.info__switch {
+  display: none;
+}
+
+.info__body {
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.4s;
+}
+
+.info__switch:checked~.info__body {
+  max-height: 230px;
+}
+
+.info__headline::before {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: 4px;
+  border: 6px solid #39739d;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  border-left-color: transparent;
+}
+
+.info__switch:checked~.info__headline::before {
+  transform: rotate(180deg) translateY(6px);
+}
+
+.info__headline {
+  display: block;
+  position: relative;
+  margin-bottom: 15px;
+  user-select: none;
+  color: Black;
+  font-weight: normal;
+  cursor: pointer;
+  font-size: 20pt;
+  margin-top: 20pt;
+}
+
+.info__headline:hover {
+  text-decoration: underline;
+}
+
+.Оглушение {
+  background-color: DarkGreen;
+}
+
+.Паралич {
+  background-color: DarkBlue;
+}
+
+.Дезориентация {
+  background-color: DarkRed;
+}
+
+.Обездвиживание {
+  background-color: OrangeRed;
+}
+
+.Немота {
+  background-color: Indigo;
+}
+
+label {
+  color: Black;
+}

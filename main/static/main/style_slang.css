@@ -1,0 +1,32 @@
+html {
+  background-color: DarkGrey;
+}
+
+header {
+  grid-area: header;
+  display: block;
+  position: fixed;
+  top: 5;
+}
+
+table {
+  border-spacing: 50px;
+  width: 100%;
+  table-layout: fixed;
+}
+table th {
+  font-size: 36pt;
+  vertical-align: middle;
+  text-align: center;
+}
+table td {
+  font-size: 28pt;
+  text-align: center;
+  vertical-align: middle;
+  width: 33.33%;
+}
+
+p {
+  font-size: 20pt;
+  margin: 20pt;
+}
