@@ -7,7 +7,7 @@ header {
   grid-area: header;
   display: block;
   position: fixed;
-  top: 5;
+  top: 0;
 }
 
 .col-1-4 {
