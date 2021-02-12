@@ -81,23 +81,23 @@ table td {
 }
 
 .Оглушение {
-  background-color: DarkGreen;
+  background-color: #003200;
 }
 
 .Паралич {
-  background-color: DarkBlue;
+  background-color: #000032;
 }
 
 .Дезориентация {
-  background-color: DarkRed;
+  background-color: #320000;
 }
 
 .Обездвиживание {
-  background-color: OrangeRed;
+  background-color: #643200;
 }
 
 .Немота {
-  background-color: Indigo;
+  background-color: #240024;
 }
 
 label {

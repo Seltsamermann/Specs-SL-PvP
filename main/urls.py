@@ -1,6 +1,8 @@
 from django.urls import path
 
 from . import views
+from django.views.generic import RedirectView
+from django.conf.urls import url
 
 app_name = 'main'
 urlpatterns = [
@@ -21,5 +23,6 @@ urlpatterns = [
     path('classes/druid/', views.druid, name='druid'),
     path('classes/demonhunter/', views.demonhunter, name='demonhunter'),
     path('classes/deathknight/', views.deathknight, name='deathknight'),
-    path('classes/<int:special>/', views.spec, name="specialization")
+    path('classes/<int:special>/', views.spec, name="specialization"),
+    url(r'^favicon\.ico$', RedirectView.as_view(url='/static/main/favicon.ico', permanent=True)),
 ]

@@ -2,25 +2,11 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'main/style_index.css' %}">
 
-<div class="wrapper">
-<header>
-    <center>
-        <a href="/" class="not_clickable"><h1> Обзор специализаций в PvP в Shadowlands </h1></a>
-    </center>
-</header>
-
-<div class="footer">
-    <div class="button col-1-4"><a href="/classes">Классы и специализации</a></div>
-    <div class="button col-1-4"><a href="/slang">Сленговый словарь для начинающих</a></div>
-    <div class="button col-1-4"><a href="/diminishing">Diminishing returns - зачем, почему и за что?</a></div>
-    <div class="button col-1-4"><a href="/macro">Основы написания макросов</a></div>
-</div>
-</div>
-
 <html>
 <head>
     <title>PvP и всё о нём</title>
-    <link rel="icon" type="image/x-icon" href="https://seltsamermann.pythonanywhere.com/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon.ico' %}"/>
     <meta property="og:title" content="PvP и всё о нём">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Обзор специализаций в PvP в Shadowlands">
@@ -28,4 +14,20 @@
     <meta property="og:description" content="Все классоспеки с ковенантами в PvP и многое другое!">
     <meta property="og:image" content="/static/main/images/logo.jpg">
 </head>
+<body>
+  <div class="wrapper">
+  <header>
+      <center>
+          <a href="/" class="not_clickable"><h1> Обзор специализаций в PvP в Shadowlands </h1></a>
+      </center>
+  </header>
+
+  <div class="footer">
+      <div class="button col-1-4"><a href="/classes">Классы и специализации</a></div>
+      <div class="button col-1-4"><a href="/slang">Сленговый словарь для начинающих</a></div>
+      <div class="button col-1-4"><a href="/diminishing">Diminishing returns - зачем, почему и за что?</a></div>
+      <div class="button col-1-4"><a href="/macro">Основы написания макросов</a></div>
+  </div>
+  </div>
+</body>
 </html>
