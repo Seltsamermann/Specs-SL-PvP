@@ -2,6 +2,10 @@ html {
   background-color: DarkGrey;
 }
 
+body {
+  padding-top: 200px;
+}
+
 .col-1-3 {
   width: 33.33%;
   float: left;
@@ -16,8 +20,10 @@ header {
   grid-area: header;
   display: block;
   position: fixed;
-  top: 5;
+  top: 0;
+  background-color: DarkGray;
 }
+
 
 body {
   overflow: auto;
@@ -60,6 +66,9 @@ table tr {
   margin-right: 20px;
 }
 
+.table1 {
+  border-spacing: 20px;
+}
 
 .images {
 text-align: center;

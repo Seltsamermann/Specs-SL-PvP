@@ -6,24 +6,8 @@ html {
     background-size: cover;
 }
 
-.row div {
-  width:90px;
-  display:inline-block;
-  margin-bottom: 15px;
-}
-
-.container {
-  width: 100%;
-  max-width: 1024px;
-  padding: 15px;
-  margin: 0 auto;
-  color: Silver;
-}
-
-.container:after {
-  content: "";
-  display: table;
-  clear: both;
+.not_clickable {
+  cursor: default;
 }
 
 h1 {
@@ -31,26 +15,17 @@ h1 {
   color: Silver;
 }
 
-.logo {
-  float: left;
-}
-nav {
-  float: right;
-}
-nav a {
+a {
   text-decoration: none;
-  line-height: 38px;
-}
-nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  color: Silver;
 }
 
 .col-1-4 {
-  width: 25%;
+  width: 20%;
   height: 5%;
   float: left;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
 }
 
 .button {
@@ -58,7 +33,9 @@ nav ul {
   background: rgba(0, 0, 0, 0); /* прозрачность фона*/
   border-radius: 0px; /*закругление рамки*/
   border-color: transparent; /*цвет рамки*/
-  font-size: 18pt;
+  font-size: 20pt;
+  cursor: pointer;
+  text-align: center;
 }
 
 .wrapper {
